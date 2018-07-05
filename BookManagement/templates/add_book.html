@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>add_book</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+{% endblock %}
+{% block base %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form action="" method="post">
+                 {% csrf_token %}
+                 <div class="form-group">
+                    <label for="">书籍名称</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">价格</label>
+                    <input type="text" name="price" class="form-control">
+                </div>
+                <div class="form-group">
+                     <label for="">出版日期</label>
+                    <input type="date" name="pub_date" class="form-control">
+                </div>
+                <div class="form-group">
+                     <label for="">出版社</label>
+                     <select name="publish" id="" class="form-control">
+                         {% for foo in pub_obj %}
+                            <option value="{{ foo.id }}">{{ foo.name }}</option>
+                         {% endfor %}
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">作者(按住Ctri键多选)</label>
+                    <select name="author_list" id="" class="form-control" multiple="multiple">
+                        {% for i in aut_obj %}
+                            <option value="{{ i.id }}">{{ i.name }}</option>
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+                <input type="submit" class="btn btn-default pull-right">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

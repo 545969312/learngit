@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Title</title>
+    {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="../static/css/reset.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/css/base.css">
+        <link rel="stylesheet" href="../static/css/img.css">
+    {% endblock css %}
+
+</head>
+<body>
+{% block base %}
+<div class="container">
+
+    <span id="span0">书山有路勤为径,学海无涯苦作舟!</span>
+    <span id="span1">当前用户：{{ username }}</span>
+    <span id="span2">最近一次登陆时间：{{ login_time }}</span>
+    <a href="{% url 'logout' %}" id="span3">注销</a>
+
+</div>
+{% endblock %}
+
+<div class="header">
+    <p>欢迎来到Jing的私人图书系统</p>
+</div>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <p class="navbar-text col-md-1">
+            <a href="{% url 'base' %}" class="navbar-link">回到主页</a>
+        </p>
+        <p class="navbar-text col-md-1">
+            <a href="{% url 'query_book' %}" class="navbar-link">查看书籍</a>
+        </p>
+        <p class="navbar-text col-md-1">
+            <a href="{% url 'add_book' %}" class="navbar-link">添加书籍</a>
+        </p>
+        <p class="navbar-text col-md-1">
+            <a href="{% url 'upload' %}" class="navbar-link">上传文件</a>
+        </p>
+    </nav>
+</div>
+<div>
+{% block content %}
+    <div class="container">
+        <div class="row img">
+            <h1 style="color: #ff9800">美好生活从读书开始!</h1>
+        </div>
+    </div>
+{% endblock %}
+</div>
+
+</body>
+</html>
